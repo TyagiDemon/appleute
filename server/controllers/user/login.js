@@ -20,7 +20,7 @@ const login = async (req, res) => {
 			expiresIn: "3h",
 		});
 
-		res.status(200).json({ success: true, result: token });
+		res.status(200).json({ success: true, result: token, user });
 	} catch (err) {
 		res
 			.status(err.status || 500)

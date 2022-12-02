@@ -1,7 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
-
+import cors from "cors";
 import userRoutes from "./routes/user.js";
 import productRoutes from "./routes/product.js";
 import orderRoutes from "./routes/order.js";
@@ -12,6 +12,7 @@ const app = express();
 
 app.use(express.json({ limit: "30mb", extended: true }));
 app.use(express.urlencoded({ limit: "30mb", extended: true }));
+app.use(cors());
 
 const PORT = process.env.PORT || 5000;
 
