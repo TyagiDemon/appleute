@@ -1,3 +1,9 @@
+import AllProducts from "./AllProducts";
+
 export default function Home() {
-	return <div>This is home</div>;
+	return (
+		<div>
+			<AllProducts />
+		</div>
+	);
 }

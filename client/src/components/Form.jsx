@@ -57,6 +57,16 @@ export default function Form() {
 		event.preventDefault();
 	};
 
+	const saveCart = (cart) => {
+		let localCart = {};
+
+		cart.map((item) => {
+			localCart[item.id] = item.quantity;
+		});
+
+		localStorage.setItem("cart", JSON.stringify(localCart));
+	};
+
 	const handleSubmit = async () => {
 		if (showLogin) {
 			if (loginQuery.email === "" || loginQuery.password === "") {
@@ -71,7 +81,8 @@ export default function Form() {
 				.then((data) => {
 					console.log(data);
 					localStorage.setItem("token", data.result);
-					localStorage.setItem("cart", JSON.stringify(data.user.cart));
+					saveCart(data.user.cart);
+					// localStorage.setItem("cart", JSON.stringify(data.user.cart));
 					navigate("/");
 				})
 				.catch((err) => {
@@ -100,7 +111,8 @@ export default function Form() {
 				.then((data) => {
 					console.log(data);
 					localStorage.setItem("token", data.result);
-					localStorage.setItem("cart", JSON.stringify(data.user.cart));
+					saveCart(data.user.cart);
+					// localStorage.setItem("cart", JSON.stringify(data.user.cart));
 					navigate("/");
 				})
 				.catch((err) => {
@@ -114,7 +126,6 @@ export default function Form() {
 	};
 	return (
 		<Wrapper>
-			<CustomAlert />
 			<FormBox
 				onKeyDown={(event) => {
 					if (event.key === "Enter") {

@@ -11,6 +11,6 @@ router.post("/register", register);
 router.post("/login", login);
 router.patch("/addToCart", verifyLogin, addToCart);
 router.get("/getAll", getUsers);
-router.get("/:id", getUser);
+router.post("/", verifyLogin, getUser);
 
 export default router;
